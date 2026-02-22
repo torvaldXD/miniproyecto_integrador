@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: miniproyecto-api
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn core.wsgi:application"
+    rootDir: backend
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0 # Or your version
+      - key: DEBUG
+        value: "False"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: # If using Render DB, but we use Supabase
+      - key: SECRET_KEY
+        generateValue: true
